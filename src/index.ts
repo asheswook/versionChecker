@@ -1,5 +1,14 @@
 import type { Request as req, ExecutionContext } from "@cloudflare/workers-types/experimental";
 
+const gatherResponse = async (response: Response) => {
+    const { headers } = response;
+    const contentType = headers.get("content-type") || "";
+    if (contentType.includes("application/json")) {
+        return JSON.stringify(await response.json());
+    }
+    return response.text();
+};
+
 export default {
     async fetch(request: req, env: any, ctx: ExecutionContext) {
         try {
@@ -36,13 +45,4 @@ const uSAINTChecker = async (request: req, token: string) => {
             "content-type": "application/json;charset=UTF-8",
         },
     });
-};
-
-const gatherResponse = async (response: Response) => {
-    const { headers } = response;
-    const contentType = headers.get("content-type") || "";
-    if (contentType.includes("application/json")) {
-        return JSON.stringify(await response.json());
-    }
-    return response.text();
 };
