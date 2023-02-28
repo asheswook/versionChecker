@@ -2,7 +2,7 @@ name = "versionchecker"
 main = "src/index.ts"
 compatibility_date = "2023-02-28"
 usage_model = "bundled"
-env = { }
+
 
 [triggers]
 crons = [ ]
