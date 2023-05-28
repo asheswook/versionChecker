@@ -12,4 +12,4 @@ wrangler으로 작성되었으며 Cloudflare workers의 serverless용으로 작�
 }
 ```
 ## Environment
-`GITHUB_TOKEN`: Github API 엑세스 토큰
+`GITHUB_TOKEN`: Github API 액세스 토큰
